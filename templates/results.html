@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(to right, #dbeafe, #f3f4f6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            width: 500px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .fake {
+            color: red;
+            font-weight: bold;
+            font-size: 22px;
+        }
+        .real {
+            color: green;
+            font-weight: bold;
+            font-size: 22px;
+        }
+        p {
+            text-align: left;
+            margin: 10px 0;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Prediction Result</h2>
+        {% if label == "Fake" %}
+            <div class="fake">FAKE NEWS ❌</div>
+        {% else %}
+            <div class="real">REAL NEWS ✅</div>
+        {% endif %}
+        <br>
+        <p><strong>Article:</strong> {{ content | e }}</p>
+        <p><strong>Confidence:</strong> {{ confidence | round(2) }}%</p>
+        <form action="/">
+            <button type="submit">Check Another Article</button>
+        </form>
+    </div>
+</body>
+</html>
